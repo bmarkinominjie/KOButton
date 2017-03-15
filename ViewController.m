@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "UIButton+ExpandArea.h"
-//#import "UIButton+EnlargeTouchArea.h"
 
 @interface ViewController ()
 
@@ -18,8 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 
+//方法一：直接用runtime修改UIbutton的事件区域
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [btn setExpandScale:2];
     btn.frame = CGRectMake(100, 100, 80, 80);
@@ -34,5 +33,12 @@
     NSLog(@"++++++++++++++++++++++++++++++");
 }
 
+//方法二：继承UIButton,重写他的方法
+//- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event
+//{
+//    CGRect bounds = self.bounds;
+//    bounds = CGRectInset(bounds, -0.5 * 20, -0.5 * 20);
+//    return CGRectContainsPoint(bounds, point);
+//}
 
 @end
